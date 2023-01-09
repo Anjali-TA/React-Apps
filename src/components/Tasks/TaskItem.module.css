@@ -1,0 +1,27 @@
+.task-item {
+  display: flex;
+  background-color: rgb(7, 1, 1);
+  margin: 10px;
+}
+.task-title{
+  display: flex;
+  padding: 20px;
+  color: #fff;
+  width:80%;
+  float:left;
+}
+.completed{
+  display:flex;
+  background-color: rgb(74, 238, 110);
+}
+.complete-task{
+  width:20%;
+  height: 60%;
+  margin:auto;
+  padding:15px;
+  float:right;
+  border-radius: 10px;
+  text-align: center;
+  color:rgb(39, 240, 39);
+  cursor: pointer;
+}
