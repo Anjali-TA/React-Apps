@@ -27,3 +27,14 @@ We have created separate branches for different react apps with all the source c
 - There you will see the Login page of Shortened App
 - After Login, you will be prompted to the Home page, where you can enter the URL that need to be shortened and also you can view list of already shortened urls.
 - This is a multi page app with two pages: Home & Contact us. You can navigate through the pages by clicking on the links provided on top navigation bar.
+
+2. Shopping Cart App:
+- You can checkout the source code on shopping-app branch.
+- You can download the source code by navigating to shopping-app branch, then click on the code button appeared on top right corner.
+- After downloading and unzipping the code,open the terminal and change directory to your project folder. 
+- To run the App you need to install node-modules by running "npm install".
+- After installing node-modules, you can run the app on localhost using the command "npm start" on terminal.
+- You will be propmted to http://localhost:3000
+- There you will see the Login page of App, you can login to the app using your google login credentials.
+- Once Login to the app you will see the list of available products and add them to the cart.
+- You can later update the cart by removing some items or change the quantity of items added.
