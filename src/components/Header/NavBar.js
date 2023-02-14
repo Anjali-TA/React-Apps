@@ -10,10 +10,10 @@ const NavBar = (props) => {
         <nav>
           <ul>
             <li>
-              <NavLink activeClassName={styles.active} to="/">Home</NavLink>
+              <NavLink className = {({isActive}) => isActive ? styles.active : undefined} to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink activeClassName={styles.active} to="/contact">Contact Us</NavLink>
+              <NavLink className = {({isActive}) => isActive ? styles.active : undefined} to="/contact">Contact Us</NavLink>
             </li>
             <button onClick={props.onLogout}> Logout</button>
           </ul>
