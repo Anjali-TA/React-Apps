@@ -7,9 +7,8 @@ We have created separate branches for different react apps with all the source c
 - You can checkout the source code on todo-app branch.
 - You can download the source code by navigating to todo-app branch, then click on the code button appeared on top right corner.
 - After downloading and unzipping the code,open the terminal and change directory to your project folder.
-- To run the Todo App you need to install node-modules by running "npm install".
-- Also install jwt_decode by running command "npm install jwt-decode".
-- After installing node-modules & jwt-decode, you can run the app on localhost using the command "npm start" on terminal.
+- To run the Todo App you need to install node-modules by running "npm install" on terminal.
+- After installing node-modules, you can run the app on localhost using the command "npm start" on terminal.
 - You will be propmted to http://localhost:3000
 - There you will see the Login page of Todo App
 - After Login, you can see some Dummy Tasks already added, you can add new tasks,you can mark a task complete by pressing done button on particular task.
@@ -20,11 +19,10 @@ We have created separate branches for different react apps with all the source c
 - You can download the source code by navigating to shotened-app branch, then click on the code button appeared on top right corner.
 - After downloading and unzipping the code,open the terminal and change directory to your project folder. 
 - To run the App you need to install node-modules by running "npm install".
-- Then you have to install react-router-dom to support routing in react app, for that run "npm install react-router-dom" command.
-- Also install jwt_decode by running command "npm install jwt-decode".
-- After installing node-modules, jwt-decode & react-router-dom, you can run the app on localhost using the command "npm start" on terminal.
+- After installing node-modules, you can run the app on localhost using the command "npm start" on terminal.
+- In case you get any error try to install jwt-decode by running "npm install jwt-decode" and also install react router dom using "npm install react-router-dom".
 - You will be propmted to http://localhost:3000
-- There you will see the Login page of Shortened App
+- Once you successfully run the app, you will see the Login page of Shortened App
 - After Login, you will be prompted to the Home page, where you can enter the URL that need to be shortened and also you can view list of already shortened urls.
 - This is a multi page app with two pages: Home & Contact us. You can navigate through the pages by clicking on the links provided on top navigation bar.
 
