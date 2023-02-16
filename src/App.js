@@ -63,6 +63,11 @@ function App() {
     setTasks(updatedTasks);
   };
 
+  const taskDeleteHandler = (id) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+  }
+
   return (
     <React.Fragment>
       {!isLogin && (
@@ -73,14 +78,18 @@ function App() {
       )}
       {isLogin && (
         <React.Fragment>
-          <Card >
+          <Card>
             <div className="logout">
               <h2> Hey, {user.name}</h2>
               <button onClick={logOutHandler}> Logout</button>
             </div>
           </Card>
           <NewTask onAddTask={addTaskHandler} />
-          <TaskList tasks={tasks} onUpdateStatus={updateTaskStatusHandler} />
+          <TaskList
+            tasks={tasks}
+            onUpdateStatus={updateTaskStatusHandler}
+            onTaskDelete={taskDeleteHandler}
+          />
         </React.Fragment>
       )}
     </React.Fragment>

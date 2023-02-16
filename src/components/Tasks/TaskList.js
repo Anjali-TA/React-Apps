@@ -31,6 +31,7 @@ const TaskList = (props) => {
             title={task.title}
             completed={task.completed}
             onUpdate={props.onUpdateStatus}
+            onDelete = {props.onTaskDelete}
           />
         );
       })}
