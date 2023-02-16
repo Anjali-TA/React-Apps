@@ -6,8 +6,12 @@
     overflow: auto;
   }
 
+  .container{
+    margin-top:100px;
+  }
+
   .total {
-    display: flex;
+    display: left;
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
@@ -16,14 +20,14 @@
   }
 
   .actions {
-    text-align: right;
+    text-align: left;
   }
 
   .actions button {
     font: inherit;
     cursor: pointer;
     background-color: transparent;
-    border: 1px solid #8a2b06;
+    border: 1px solid #1b093a;
     padding: 0.5rem 2rem;
     border-radius: 25px;
     margin-left: 1rem;
@@ -31,16 +35,16 @@
 
   .actions button:hover,
   .actions button:active {
-    background-color: #5a1a01;
-    border-color: #5a1a01;
+    background-color: #160e24;
+    border-color: #1b093a;
     color: white;
   }
 
   .actions .button--alt {
-    color: #8a2b06;
+    color: #1b093a;
   }
 
   .actions .button {
-    background-color: #8a2b06;
+    background-color: #1b093a;
     color: white;
   }

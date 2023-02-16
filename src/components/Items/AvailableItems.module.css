@@ -1,8 +1,8 @@
 .items {
-    max-width: 60rem;
-    width: 90%;
+  max-width: 60rem;
+    width: 100%;
     margin: 2rem auto;
-    animation: meals-appear 1s ease-out forwards;
+    animation: products-appear 1s ease-out forwards;
   }
 
   .items ul {
@@ -11,7 +11,7 @@
     padding: 0;
   }
 
-  @keyframes meals-appear {
+  @keyframes products-appear {
     from {
       opacity: 0;
       transform: translateY(3rem);

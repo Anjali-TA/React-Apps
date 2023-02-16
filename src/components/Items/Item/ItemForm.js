@@ -37,18 +37,7 @@ const ItemForm = (props) => {
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <Input
-        ref={amountInputRef}
-        label="Amount"
-        input={{
-          id: "amount" + props.id,
-          type: "number",
-          min: "1",
-          max: "5",
-          step: "1",
-          defaultValue: "1",
-        }}
-      />
+
       <div className={classes.controls}>
         {props.availableSizes.map((val) => (
           <Input
@@ -66,6 +55,18 @@ const ItemForm = (props) => {
           />
         ))}
       </div>
+      <Input
+        ref={amountInputRef}
+        label="Amount"
+        input={{
+          id: "amount" + props.id,
+          type: "number",
+          min: "1",
+          max: "5",
+          step: "1",
+          defaultValue: "1",
+        }}
+      />
       <button>+ Add</button>
       {!isValidAmount && <p>Please Enter a valid amount (1-5). </p>}
       {!isValidSize && <p>Please select size </p>}
