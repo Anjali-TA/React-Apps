@@ -1,20 +1,20 @@
 import jwt_decode from "jwt-decode";
 import React, { Fragment, useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import Cart from "../components/Cart/Cart";
 import Header from "../components/Layout/Header";
 import LoginPage from "../components/Login/LoginPage";
 
 const RootLayout = () => {
   //const [isLogin, setIsLogin] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [priceFilterVal, setPriceFilterVal] = useState("");
+
   let data = JSON.parse(localStorage.getItem("user"));
   const [user, setUser] = useState(
     data ? (data.exp * 1000 - Date.now() > 0 ? data : []) : []
   );
   const diff = user ? user.exp - Math.floor(Date.now() / 1000) : 0;
   const expirationDuration = diff > 0 ? diff : 0;
-
-  const [cartIsShown, setCartIsShown] = useState(false);
   const navigate = useNavigate();
 
   function handleCallbackResponse(response) {
@@ -53,21 +53,18 @@ const RootLayout = () => {
     navigate("/");
   };
 
-  const hideCartHandler = () => {
-    setCartIsShown(false);
-  };
-
-  const showCartHandler = () => {
-    setCartIsShown(true);
-  };
   return (
     <Fragment>
       {user.length === 0 && <LoginPage />}
       {user.length !== 0 && (
         <>
-          {cartIsShown && <Cart onClose={hideCartHandler} />}
-          <Header onShowCart={showCartHandler} onLogout={logOutHandler} />
-          <Outlet />
+          <Header onLogout={logOutHandler} />
+          <Outlet
+            context={{
+              products: [products, setProducts],
+              priceFilter: [priceFilterVal, setPriceFilterVal],
+            }}
+          />
         </>
       )}
     </Fragment>

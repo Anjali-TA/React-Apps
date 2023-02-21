@@ -1,24 +1,34 @@
-import { useContext } from "react";
+//import { useContext } from "react";
 import Card from "react-bootstrap/Card";
-import CartContext from "../../../store/cart-context";
+//import CartContext from "../../../store/cart-context";
+import { useDispatch } from "react-redux";
 import classes from "./Item.module.css";
 import ItemForm from "./ItemForm";
 
 const Item = (props) => {
-  const cartCtx = useContext(CartContext);
+  //const cartCtx = useContext(CartContext);
+  const dispatch = useDispatch();
   const price = `$${props.price.toFixed(2)}`;
 
   const AddToCartHandler = (formData) => {
-    cartCtx.addItem({
+    // cartCtx.addItem({
+    //   id: props.id,
+    //   name: props.name,
+    //   amount: formData.amount,
+    //   price: props.price,
+    //   size: formData.size,
+    // });
+    const item = {
       id: props.id,
       name: props.name,
       amount: formData.amount,
       price: props.price,
       size: formData.size,
-    });
+    };
+    dispatch({ type: "ADD" , item: item});
   };
   return (
-    <Card key={props.key} className={classes.card} >
+    <Card key={props.key} className={classes.card}>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>{props.description}</Card.Text>

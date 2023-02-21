@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import shoppingImage from "../../assets/shopping.webp";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 
@@ -14,11 +13,7 @@ const Header = (props) => {
           Logout
         </button>
       </header>
-      <div className={classes["main-image"]}>
-        <img src={shoppingImage} alt="A shopping website!" />
-      </div>
     </React.Fragment>
   );
 };
-
 export default Header;

@@ -1,28 +1,38 @@
-import { useContext } from "react";
 import { Alert, Col, Container } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import CartContext from "../../store/cart-context";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const Cart = (props) => {
-  const cartCtx = useContext(CartContext);
 
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
-  const hasItems = cartCtx.items.length > 0;
+  // const cartCtx = useContext(CartContext);
+  // const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  // const hasItems = cartCtx.items.length > 0;
+
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.items);
+  const hasItems = items.length > 0;
+  const totalAmount = `$${useSelector((state) => state.totalAmount).toFixed(
+    2
+  )}`;
 
   const cartItemAddHandler = (item) => {
-    cartCtx.addItem({ ...item, amount: 1 });
+    //cartCtx.addItem({ ...item, amount: 1 });
+    dispatch({type: 'ADD', item: {...item,amount:1}});
+
   };
 
   const cartItemRemoveHandler = (item) => {
-    cartCtx.removeItem(item.id, item.size);
+    //cartCtx.removeItem(item.id, item.size);
+    dispatch({type:'REMOVE', id: item.id, size: item.size});
   };
 
   const cartItems = (
     <Row xs={1} md={2} className="g-3">
-      {cartCtx.items.map((item) => (
+      {/* {cartCtx.items.map((item) => ( */}
+      {items.map((item) => (
         <Col key={item.id + item.size}>
           <CartItem
             name={item.name}

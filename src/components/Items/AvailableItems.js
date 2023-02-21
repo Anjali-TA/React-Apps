@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from "react-bootstrap/Spinner";
+import { useOutletContext } from "react-router-dom";
 import Card from "../UI/Card";
 import Pagination from "../UI/Pagination";
 import classes from "./AvailableItems.module.css";
@@ -9,27 +10,34 @@ import Item from "./Item/Item";
 import ItemFilter from "./ItemFilter";
 
 const AvailableItems = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useOutletContext().products;
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const [priceFilterVal, setPriceFilterVal] = useState("");
+  const [priceFilterVal, setPriceFilterVal] = useOutletContext().priceFilter;
 
   let lastItemPageIndex = currentPage * itemsPerPage;
   let firstItemPageIndex = lastItemPageIndex - itemsPerPage;
   let filteredProducts = products;
 
-  const getProducts = useCallback(async () => {
-    setIsLoading(true);
-    const response = await fetch("https://react-shopping-cart-67954.firebaseio.com/products.json");
-    const data = await response.json();
-    setProducts(data["products"]);
-    setIsLoading(false);
-  }, []);
-
   useEffect(() => {
-    getProducts();
-  }, [getProducts]);
+    async function getProducts() {
+      console.log("In get products");
+      setIsLoading(true);
+      const response = await fetch(
+        "https://react-shopping-cart-67954.firebaseio.com/products.json"
+      );
+      if(!response.ok){
+        throw new Error("Something went wrong");
+      }
+      const data = await response.json();
+      setProducts(data["products"]);
+      setIsLoading(false);
+    }
+    if(products.length === 0){
+      getProducts();
+    }
+  }, [setProducts,products]);
 
   const priceFilterChangeHandler = (val) => {
     setPriceFilterVal(val);
@@ -57,7 +65,6 @@ const AvailableItems = () => {
           />
         </Col>
       ))}
-      ;
     </Row>
   );
   return (
@@ -66,7 +73,7 @@ const AvailableItems = () => {
         {isLoading && <Spinner animation="border" />}
         {!isLoading && (
           <>
-            <ItemFilter onChangePriceFilter={priceFilterChangeHandler} />{" "}
+            <ItemFilter onChangePriceFilter={priceFilterChangeHandler} filterVal ={priceFilterVal}/>
             {itemsList}
           </>
         )}

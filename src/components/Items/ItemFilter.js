@@ -3,7 +3,6 @@ import classes from "./ItemFilter.module.css";
 
 const ItemFilter = (props) => {
   const priceRadioClickHandler = event => {
-    console.log(event.target.value);
     props.onChangePriceFilter(event.target.value);
   }
   return (
@@ -19,6 +18,7 @@ const ItemFilter = (props) => {
           name: "price",
           value: "LH",
           className: "radio",
+          checked: props.filterVal === "LH"
         }}
       />
       <Input
@@ -29,7 +29,8 @@ const ItemFilter = (props) => {
           type: "radio",
           name: "price",
           value: "HL",
-          className: "radio"
+          className: "radio",
+          checked: props.filterVal === "HL"
         }}
       />
     </div>
